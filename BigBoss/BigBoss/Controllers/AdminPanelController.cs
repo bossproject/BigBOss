@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -38,11 +39,25 @@ namespace BigBoss.Controllers
             {
                 db.Category.Add(catModel);
                 await db.SaveChangesAsync();
-                TempData["poruka"] = "Category saved!";
+                TempData["success_msg"] = "Category saved!";
                 return RedirectToAction("CategoryIndex");
             }
             return View();
         }
+
+        public ActionResult CategoryEdit(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var cat = db.Category.Where(c => c.Id == id).FirstOrDefault();
+            return View(cat);
+        }
+
+
+
+
 
     }
 }
