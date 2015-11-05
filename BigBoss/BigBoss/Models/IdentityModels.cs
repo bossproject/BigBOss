@@ -29,5 +29,7 @@ namespace BigBoss.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<CategoryModel> Category { get; set; }
     }
 }

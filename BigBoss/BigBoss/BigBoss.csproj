@@ -177,6 +177,10 @@
     <Compile Include="Migrations\201511052044060_Initial_Migration.Designer.cs">
       <DependentUpon>201511052044060_Initial_Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511052151138_Added CategoryModel.cs" />
+    <Compile Include="Migrations\201511052151138_Added CategoryModel.Designer.cs">
+      <DependentUpon>201511052151138_Added CategoryModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategoryModel.cs" />
@@ -255,6 +259,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201511052044060_Initial_Migration.resx">
       <DependentUpon>201511052044060_Initial_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511052151138_Added CategoryModel.resx">
+      <DependentUpon>201511052151138_Added CategoryModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
