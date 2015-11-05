@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,11 +182,16 @@
     <Compile Include="Migrations\201511052151138_Added CategoryModel.Designer.cs">
       <DependentUpon>201511052151138_Added CategoryModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511052209118_Add-Project.cs" />
+    <Compile Include="Migrations\201511052209118_Add-Project.Designer.cs">
+      <DependentUpon>201511052209118_Add-Project.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -247,6 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AdminPanel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -262,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511052151138_Added CategoryModel.resx">
       <DependentUpon>201511052151138_Added CategoryModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511052209118_Add-Project.resx">
+      <DependentUpon>201511052209118_Add-Project.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

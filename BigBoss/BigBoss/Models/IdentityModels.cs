@@ -31,5 +31,6 @@ namespace BigBoss.Models
         }
 
         public DbSet<CategoryModel> Category { get; set; }
+        public DbSet<ProjectModel> Project { get; set; }
     }
 }
