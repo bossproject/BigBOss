@@ -1,6 +1,7 @@
 ﻿using BigBoss.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace BigBoss.Controllers
 
         public ActionResult CategoryEdit(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -55,9 +56,62 @@ namespace BigBoss.Controllers
             return View(cat);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CategoryEdit([Bind(Include = "Id, nameCategory, descriptionCategory")] CategoryModel cat)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(cat).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                TempData["success_msg"] = "Category saved!";
+                return RedirectToAction("CategoryIndex");
 
+            }
+            return View();
+        }
 
+        public ActionResult CategoryDelete(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var cat = db.Category.Where(c => c.Id == id).FirstOrDefault();
 
+            return View(cat);
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CategoryDelete(int id)
+        {
+            var cat = db.Category.Where(c => c.Id == id).FirstOrDefault();
+            db.Category.Remove(cat);
+            await db.SaveChangesAsync();
+            TempData["success_msg"] = "Category deleted!";
+            return View("CategoryIndex");
+        }
+
+        //----------- Project controll ------------
+
+        public ActionResult ProjectIndex()
+        {
+            var projectList = db.Project.ToList();
+            return View(projectList);
+        }
+
+        public ActionResult ProjectCreate()
+        {
+            ViewBag.CatModel = new SelectList(db.Category.ToList(), "Id", "nameCategory");
+            return View();
+        }
+
+     /*   [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ProjectCreate(ProjectModel modelProj, int idCat)
+        {
+
+        }
+
+    */
     }
 }

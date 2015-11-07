@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BigBoss.Models.ProjectModel>
+
+@{
+    ViewBag.Title = "ProjectIndex";
+}
+
+<h2>ProjectIndex</h2>
+<p>@TempData["success_msg_proj"]</p>
+<p>
+    @Html.ActionLink("Create New", "ProjectCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nameProject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descProject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.additionalInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tagsProject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.money)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.moneyWithCommission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.moneyRaised)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numberOfDonations)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nameProject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descProject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.additionalInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tagsProject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.money)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.moneyWithCommission)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.moneyRaised)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numberOfDonations)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ProjectEdit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "ProjectDetails", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "ProjectDelete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
