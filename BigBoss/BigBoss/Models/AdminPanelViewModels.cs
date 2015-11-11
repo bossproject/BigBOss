@@ -8,6 +8,9 @@ namespace BigBoss.Models
 {
     public class ProjectEditViewModel
     {
+        [Key]
+        public string Id { get; set; }
+
         [Required]
         [Display(Name = "Name of project")]
         public string nameProject { get; set; }
@@ -37,7 +40,7 @@ namespace BigBoss.Models
         public int numberOfDonations { get; set; }
 
         [Display(Name = "Category")]
-        public CategoryModel categoryMod { get; set; }
+        public CategoryModel catMod { get; set; }
 
         public IEnumerable<CategoryModel> listaKaregorija { get; set; }
     }

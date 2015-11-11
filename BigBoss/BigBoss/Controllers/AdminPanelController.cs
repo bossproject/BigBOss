@@ -109,18 +109,19 @@ namespace BigBoss.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ProjectCreate(ProjectModel modelProj, int? categoryMod)
         {
+
             modelProj.Id = Guid.NewGuid().ToString();
             modelProj.categoryMod = db.Category.Where(c => c.Id == categoryMod).FirstOrDefault();
-            modelProj.moneyWithCommission = (modelProj.money/100)*104;
+            modelProj.moneyWithCommission = (modelProj.money / 100) * 104;
             modelProj.moneyRaised = 0;
             modelProj.numberOfDonations = 0;
-     //       if (ModelState.IsValid)
-     //       {
-                db.Project.Add(modelProj);
-                await db.SaveChangesAsync();
-                return RedirectToAction("ProjectIndex");
-     //       }
-     //       return View();
+            //       if (ModelState.IsValid)
+            //       {
+            db.Project.Add(modelProj);
+            await db.SaveChangesAsync();
+            return RedirectToAction("ProjectIndex");
+            //       }
+            //       return View();
         }
 
         public async Task<ActionResult> ProjectEdit(string id)
@@ -128,12 +129,50 @@ namespace BigBoss.Controllers
             ProjectModel mod = await db.Project.FindAsync(id);
             //    var lista = new SelectList(db.Category.ToArray(), "Id", "nameCategory");
             //    ViewBag.CatModel = lista;
-            ProjectEditViewModel noviMod = new ProjectEditViewModel();
-            noviMod.listaKaregorija = db.Category.ToList();
-            noviMod.categoryMod = mod.categoryMod;
-            noviMod.nameProject = mod.nameProject;
-           // model.OrderTemplates = new SelectList(db.OrderTemplates, "OrderTemplateId", "OrderTemplateName", 1);
+            ProjectEditViewModel noviMod = new ProjectEditViewModel()
+            {
+                listaKaregorija = db.Category.ToList(),
+                Id = mod.Id,
+                catMod = mod.categoryMod,
+                nameProject = mod.nameProject,
+                additionalInfo = mod.additionalInfo,
+                descProject = mod.descProject,
+                money = mod.money,
+                moneyRaised = mod.moneyRaised,
+                moneyWithCommission = mod.moneyWithCommission,
+                numberOfDonations = mod.numberOfDonations,
+                tagsProject = mod.tagsProject
+            };
+
+            // model.OrderTemplates = new SelectList(db.OrderTemplates, "OrderTemplateId", "OrderTemplateName", 1);
             return View(noviMod);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ProjectEdit([Bind(Include = "Id, nameProject, descProject, additionalInfo, money, tagsProject, moneyRaised, moneyWithCommission, numberOfDonations, categoryMod")]ProjectEditViewModel kreiran, int catMod)
+        {
+            kreiran.listaKaregorija = db.Category.ToList();
+            ProjectModel zaBazu = new ProjectModel()
+            {
+                Id = kreiran.Id,
+                nameProject = kreiran.nameProject,
+                categoryMod = db.Category.Where(c => c.Id == catMod).FirstOrDefault(),
+                descProject = kreiran.descProject,
+                additionalInfo = kreiran.additionalInfo,
+                money = kreiran.money,
+                tagsProject = kreiran.tagsProject,
+                moneyRaised = kreiran.moneyRaised,
+                moneyWithCommission = kreiran.moneyWithCommission,
+                numberOfDonations = kreiran.numberOfDonations
+
+            };
+            //  TryUpdateModel(zaBazu, new string[] { "categoryMod" });
+            //  db.Project.Attach(zaBazu);
+            db.Entry(zaBazu).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+            return RedirectToAction("ProjectIndex");
+
         }
 
 

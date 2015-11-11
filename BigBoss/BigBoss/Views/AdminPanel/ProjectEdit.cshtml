@@ -82,10 +82,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.categoryMod, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.catMod, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.categoryMod, new SelectList( Model.listaKaregorija, "Id" , "nameCategory"), new { @class = "form-control"} )
-                @Html.ValidationMessageFor(model => model.categoryMod, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.catMod, new SelectList( Model.listaKaregorija, "Id" , "nameCategory", Model.listaKaregorija), new { @class = "form-control"} )
+                @Html.ValidationMessageFor(model => model.catMod, "", new { @class = "text-danger" })
             </div>
         </div>
 
