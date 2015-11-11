@@ -35,7 +35,9 @@
         <th>
             @Html.DisplayNameFor(model => model.numberOfDonations)
         </th>
-        <th></th>
+        <th>
+            Kategorija
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -63,6 +65,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.numberOfDonations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categoryMod.nameCategory)
         </td>
         <td>
             @Html.ActionLink("Edit", "ProjectEdit", new { id=item.Id }) |

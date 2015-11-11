@@ -189,6 +189,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminPanelViewModels.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -257,6 +258,7 @@
     <Content Include="Views\AdminPanel\CategoryDelete.cshtml" />
     <Content Include="Views\AdminPanel\ProjectIndex.cshtml" />
     <Content Include="Views\AdminPanel\ProjectCreate.cshtml" />
+    <Content Include="Views\AdminPanel\ProjectEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
