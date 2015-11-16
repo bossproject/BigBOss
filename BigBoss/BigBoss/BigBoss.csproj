@@ -187,6 +187,22 @@
     <Compile Include="Migrations\201511052209118_Add-Project.Designer.cs">
       <DependentUpon>201511052209118_Add-Project.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511111624222_tets.cs" />
+    <Compile Include="Migrations\201511111624222_tets.Designer.cs">
+      <DependentUpon>201511111624222_tets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511162131403_seedtest.cs" />
+    <Compile Include="Migrations\201511162131403_seedtest.Designer.cs">
+      <DependentUpon>201511162131403_seedtest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511162220008_seedtest2.cs" />
+    <Compile Include="Migrations\201511162220008_seedtest2.Designer.cs">
+      <DependentUpon>201511162220008_seedtest2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511162226291_renamed_tables.cs" />
+    <Compile Include="Migrations\201511162226291_renamed_tables.Designer.cs">
+      <DependentUpon>201511162226291_renamed_tables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminPanelViewModels.cs" />
@@ -259,6 +275,7 @@
     <Content Include="Views\AdminPanel\ProjectIndex.cshtml" />
     <Content Include="Views\AdminPanel\ProjectCreate.cshtml" />
     <Content Include="Views\AdminPanel\ProjectEdit.cshtml" />
+    <Content Include="Views\AdminPanel\RoleIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -281,6 +298,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511052209118_Add-Project.resx">
       <DependentUpon>201511052209118_Add-Project.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511111624222_tets.resx">
+      <DependentUpon>201511111624222_tets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511162131403_seedtest.resx">
+      <DependentUpon>201511162131403_seedtest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511162220008_seedtest2.resx">
+      <DependentUpon>201511162220008_seedtest2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511162226291_renamed_tables.resx">
+      <DependentUpon>201511162226291_renamed_tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

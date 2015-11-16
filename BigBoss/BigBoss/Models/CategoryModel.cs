@@ -18,5 +18,9 @@ namespace BigBoss.Models
         [Display(Name = "Category description")]
         [Required]
         public string descriptionCategory { get; set; }
+
+        public override string ToString() {
+            return nameCategory;
+        }
     }
 }

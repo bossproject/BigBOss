@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BigBoss.Models
 {
     public class ProjectEditViewModel
     {
+
+        public string Id { get; set; }
+
         [Required]
         [Display(Name = "Name of project")]
         public string nameProject { get; set; }
@@ -39,6 +43,6 @@ namespace BigBoss.Models
         [Display(Name = "Category")]
         public CategoryModel categoryMod { get; set; }
 
-        public IEnumerable<CategoryModel> listaKaregorija { get; set; }
+        public SelectList listaKaregorija { get; set; }
     }
 }

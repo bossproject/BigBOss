@@ -18,6 +18,13 @@ namespace BigBoss.Models
         }
     }
 
+    public class Role : IdentityRole {
+        public override string ToString() {
+            return this.Name;
+        }
+    }
+
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -30,7 +37,17 @@ namespace BigBoss.Models
             return new ApplicationDbContext();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IdentityRole>().ToTable("Role");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaim");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogin");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRole");
+            modelBuilder.Entity<ApplicationUser>().ToTable("User");
+        }
+
         public DbSet<CategoryModel> Category { get; set; }
         public DbSet<ProjectModel> Project { get; set; }
+        //public DbSet<Role> IdentityRoles { get; set; }
     }
 }
