@@ -148,5 +148,23 @@ namespace BigBoss.Controllers {
 
         }
 
+        [HttpGet]
+        public ActionResult ProjectDelete(string id)
+        {
+            var proj = db.Project.Where(p => p.Id.Equals(id)).FirstOrDefault();
+            return View(proj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ProjectDelete(ProjectModel p)
+        {
+            var pro = await db.Project.Where(c => c.Id == p.Id).FirstOrDefaultAsync();
+            db.Project.Remove(pro);
+            await db.SaveChangesAsync();
+            TempData["success_msg_proj"] = "Project successfully deleted!";
+            return RedirectToAction("ProjectIndex");
+        }
+
     }
 }

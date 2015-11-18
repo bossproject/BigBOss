@@ -1,0 +1,88 @@
+﻿@model BigBoss.Models.ProjectModel
+
+@{
+    ViewBag.Title = "ProjectDelete";
+}
+
+<h2>ProjectDelete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ProjectModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nameProject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameProject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descProject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descProject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.additionalInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.additionalInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tagsProject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tagsProject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.money)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.money)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moneyWithCommission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moneyWithCommission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moneyRaised)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moneyRaised)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numberOfDonations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numberOfDonations)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ProjectIndex")
+        </div>
+    }
+</div>

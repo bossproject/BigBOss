@@ -40,6 +40,7 @@ namespace BigBoss
         {
         }
 
+
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
@@ -86,6 +87,11 @@ namespace BigBoss
             }
             return manager;
         }
+
+        public bool IsRegistrationFinished(string userName)
+        {
+            return this.FindByName(userName).FinishedRegistration;
+        }
     }
 
     // Configure the application sign-in manager which is used in this application.
@@ -105,6 +111,7 @@ namespace BigBoss
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
+
     }
 
     public class ApplicationRoleManager : RoleManager<IdentityRole> {
@@ -115,4 +122,6 @@ namespace BigBoss
             return new ApplicationRoleManager(roleStore);
         }
     }
+
+
 }
