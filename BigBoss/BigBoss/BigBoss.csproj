@@ -175,33 +175,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511052044060_Initial_Migration.cs" />
-    <Compile Include="Migrations\201511052044060_Initial_Migration.Designer.cs">
-      <DependentUpon>201511052044060_Initial_Migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511052151138_Added CategoryModel.cs" />
-    <Compile Include="Migrations\201511052151138_Added CategoryModel.Designer.cs">
-      <DependentUpon>201511052151138_Added CategoryModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511052209118_Add-Project.cs" />
-    <Compile Include="Migrations\201511052209118_Add-Project.Designer.cs">
-      <DependentUpon>201511052209118_Add-Project.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511111624222_tets.cs" />
-    <Compile Include="Migrations\201511111624222_tets.Designer.cs">
-      <DependentUpon>201511111624222_tets.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511162131403_seedtest.cs" />
-    <Compile Include="Migrations\201511162131403_seedtest.Designer.cs">
-      <DependentUpon>201511162131403_seedtest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511162220008_seedtest2.cs" />
-    <Compile Include="Migrations\201511162220008_seedtest2.Designer.cs">
-      <DependentUpon>201511162220008_seedtest2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511162226291_renamed_tables.cs" />
-    <Compile Include="Migrations\201511162226291_renamed_tables.Designer.cs">
-      <DependentUpon>201511162226291_renamed_tables.cs</DependentUpon>
+    <Compile Include="Migrations\201511162334162_1.cs" />
+    <Compile Include="Migrations\201511162334162_1.Designer.cs">
+      <DependentUpon>201511162334162_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -290,26 +266,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511052044060_Initial_Migration.resx">
-      <DependentUpon>201511052044060_Initial_Migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511052151138_Added CategoryModel.resx">
-      <DependentUpon>201511052151138_Added CategoryModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511052209118_Add-Project.resx">
-      <DependentUpon>201511052209118_Add-Project.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511111624222_tets.resx">
-      <DependentUpon>201511111624222_tets.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511162131403_seedtest.resx">
-      <DependentUpon>201511162131403_seedtest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511162220008_seedtest2.resx">
-      <DependentUpon>201511162220008_seedtest2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511162226291_renamed_tables.resx">
-      <DependentUpon>201511162226291_renamed_tables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511162334162_1.resx">
+      <DependentUpon>201511162334162_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

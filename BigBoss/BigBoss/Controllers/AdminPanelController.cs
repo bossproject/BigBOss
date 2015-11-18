@@ -19,8 +19,8 @@ namespace BigBoss.Controllers {
         //----------- Category controll -----------
 
         public ActionResult CategoryIndex() {
-            var lista = db.Category.ToArray();
-            return View(lista);
+            var lista = db.Category.ToList();
+            return View(db.Category.ToList());
         }
 
         public ActionResult CategoryCreate() {
@@ -75,7 +75,7 @@ namespace BigBoss.Controllers {
             db.Category.Remove(cat);
             await db.SaveChangesAsync();
             TempData["success_msg"] = "Category deleted!";
-            return View("CategoryIndex");
+            return RedirectToAction("CategoryIndex");
         }
 
         //----------- Project controll ------------

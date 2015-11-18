@@ -16,8 +16,10 @@ namespace BigBoss.Migrations
 
         protected override void Seed(BigBoss.Models.ApplicationDbContext context)
         {
-            context.Roles.AddOrUpdate(r => r.Name, new Role { Id = Guid.NewGuid().ToString(), Name = "Admin" }, 
-                new Role { Id = Guid.NewGuid().ToString(), Name = "User" });
+            context.Roles.AddOrUpdate(r => r.Name, 
+                new Role { Id = Guid.NewGuid().ToString(), Name = "Admin" }, 
+                new Role { Id = Guid.NewGuid().ToString(), Name = "User" }, 
+                new Role { Id = Guid.NewGuid().ToString(), Name = "Organization"});
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
