@@ -1,0 +1,35 @@
+﻿<div style="width:400px;border:2px double black">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Registration</legend>
+            <div class="editor-label">
+                <label>UserName</label>
+            </div>
+            <div class="editor-field">
+                <input type="text" name="UserName" />
+            </div><div class="editor-label">
+                <label>Password</label>
+            </div>
+            <div class="editor-field">
+                <input type="password" name="Password" />
+            </div>
+            <div class="editor-label">
+                <label>PhoneNo</label>
+            </div>
+            <div class="editor-field">
+                <input type="text" name="txtPhoneNo" />
+            </div>
+            <div class="editor-label">
+                <label>Email</label>
+            </div>
+            <div class="editor-field">
+                <input type="text" name="txtEmail" />
+            </div>
+            <p>
+                <input type="submit" value="Registration" />
+            </p>
+        </fieldset>
+    }
+</div>

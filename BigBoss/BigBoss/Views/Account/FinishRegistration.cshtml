@@ -1,4 +1,19 @@
-﻿
+﻿<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+     $('#rbLogin').change(function () {
+      var url = '/Account/GetLoginView';
+      $("#GetView").load(url);
+     });
+
+     $('#rbRegistration').change(function () {
+        var url = '/Account/GetRegistrationView';
+        $("#GetView").load(url);
+        });
+     });
+</script>
+
+
 @{
     ViewBag.Title = "FinishRegistration";
 }
@@ -6,6 +21,15 @@
 <h2>FinishRegistration</h2>
 
 <div><h2>What are you?</h2></div>
-
-@Html.RadioButton("Prvi", "Organizacija")Organizacija
-@Html.RadioButton("Prvi", "Pravno Lice")Pravno Lice
+@Html.RadioButton("rb", "True", new { id = "rbLogin" })
+<label>
+    Login
+</label>
+@Html.RadioButton("rb", "False", new { id = "rbRegistration" })
+<label>
+    Registration
+</label>
+<br />
+<br />
+<div id=”GetView”>
+</div>

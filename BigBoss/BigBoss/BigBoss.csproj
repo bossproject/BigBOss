@@ -264,6 +264,8 @@
     <Content Include="Views\AdminPanel\Index.cshtml" />
     <Content Include="Views\AdminPanel\ProjectDelete.cshtml" />
     <Content Include="Views\Account\FinishRegistration.cshtml" />
+    <Content Include="Views\Account\GetLoginView.cshtml" />
+    <Content Include="Views\Account\GetRegistrationView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

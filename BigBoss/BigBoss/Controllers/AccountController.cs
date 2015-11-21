@@ -59,6 +59,15 @@ namespace BigBoss.Controllers
             return View();
         }
 
+        public ActionResult GetLoginView()
+        {
+            return PartialView();
+        }
+        public ActionResult GetRegistrationView()
+        {
+            return PartialView();
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
