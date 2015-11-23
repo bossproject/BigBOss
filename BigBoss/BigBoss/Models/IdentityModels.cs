@@ -21,8 +21,10 @@ namespace BigBoss.Models
         public bool FinishedRegistration { get; set; }
     }
 
-    public class Role : IdentityRole {
-        public override string ToString() {
+    public class Role : IdentityRole
+    {
+        public override string ToString()
+        {
             return this.Name;
         }
     }
@@ -40,7 +42,8 @@ namespace BigBoss.Models
             return new ApplicationDbContext();
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<IdentityRole>().ToTable("Role");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaim");
@@ -52,6 +55,8 @@ namespace BigBoss.Models
         public DbSet<CategoryModel> Category { get; set; }
         public DbSet<ProjectModel> Project { get; set; }
         public DbSet<OrganizationModel> Organization { get; set; }
+        public DbSet<DonatorModel> Donator { get; set; }
+        public DbSet<CompanyModel> Company { get; set; }
         //public DbSet<Role> IdentityRoles { get; set; }
     }
 }

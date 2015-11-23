@@ -1,17 +1,8 @@
 ﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#rbLogin').change(function () {
-            var url = '/Account/GetLoginView';
-            $("#GetView").fadeOut('fast' ,function () {
-                $("#GetView").load(url, function () {
-                    $("#GetView").fadeIn('slow');
-                });
-            });
-        });
-
-        $('#rbRegistration').change(function () {
-            var url = '/Account/GetRegistrationView';
+        $('#userRegistration').change(function () {
+            var url = '/Account/DonatorRegistration';
             $("#GetView").fadeOut('fast', function () {
                 $("#GetView").load(url, function () {
                     $("#GetView").fadeIn('slow');
@@ -19,7 +10,25 @@
             });
         });
 
-     });
+        $('#organizationRegistration').change(function () {
+            var url = '/Account/OrganizationRegistration';
+            $("#GetView").fadeOut('fast', function () {
+                $("#GetView").load(url, function () {
+                    $("#GetView").fadeIn('slow');
+                });
+            });
+        });
+
+        $('#companyRegistration').change(function () {
+            var url = '/Account/CompanyRegistration';
+            $("#GetView").fadeOut('fast', function () {
+                $("#GetView").load(url, function () {
+                    $("#GetView").fadeIn('slow');
+                });
+            });
+        });
+
+    });
 </script>
 
 
@@ -29,14 +38,18 @@
 
 <h2>FinishRegistration</h2>
 
-<div><h2>What are you?</h2></div>
-@Html.RadioButton("rb", "True", new { id = "rbLogin" })
+<div><h3>What are you?</h3></div>
+@Html.RadioButton("rb", "True", new { id = "userRegistration" })
 <label>
-    Login
+    User
 </label>
-@Html.RadioButton("rb", "False", new { id = "rbRegistration" })
+@Html.RadioButton("rb", "False", new { id = "organizationRegistration" })
 <label>
-    Registration
+    Organization
+</label>
+@Html.RadioButton("rb", "False", new { id = "companyRegistration" })
+<label>
+    Company
 </label>
 <br />
 <br />

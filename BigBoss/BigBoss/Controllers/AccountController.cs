@@ -68,6 +68,26 @@ namespace BigBoss.Controllers
             return PartialView();
         }
 
+
+        public ActionResult OrganizationRegistration()
+        {
+            return PartialView();
+        }
+
+        public ActionResult DonatorRegistration()
+        {
+            return PartialView();
+        }
+
+        public ActionResult CompanyRegistration()
+        {
+            return PartialView();
+        }
+
+
+
+
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
