@@ -58,17 +58,7 @@ namespace BigBoss.Controllers
         {
             return View();
         }
-
-        public ActionResult GetLoginView()
-        {
-            return PartialView();
-        }
-        public ActionResult GetRegistrationView()
-        {
-            return PartialView();
-        }
-
-
+        
         public ActionResult OrganizationRegistration()
         {
             return PartialView();
@@ -84,9 +74,19 @@ namespace BigBoss.Controllers
             return PartialView();
         }
 
-
-
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DonatorRegistration(DonatorModel model) {
+            ApplicationDbContext db = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+            if(ModelState.IsValid) {
+                model.usersAplication = UserManager.FindById(User.Identity.GetUserId());
+                if(model.usersAplication != null) {
+                    db.Donator.Add(model);
+                    await db.SaveChangesAsync();
+                }
+            }
+            return Redirect("Login");
+        }
 
         //
         // GET: /Account/Login

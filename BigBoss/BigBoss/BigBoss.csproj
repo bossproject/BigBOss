@@ -175,21 +175,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511162334162_1.cs" />
-    <Compile Include="Migrations\201511162334162_1.Designer.cs">
-      <DependentUpon>201511162334162_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511181945339_Organization.cs" />
-    <Compile Include="Migrations\201511181945339_Organization.Designer.cs">
-      <DependentUpon>201511181945339_Organization.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511182056227_registration.cs" />
-    <Compile Include="Migrations\201511182056227_registration.Designer.cs">
-      <DependentUpon>201511182056227_registration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511232018407_company-donator.cs" />
-    <Compile Include="Migrations\201511232018407_company-donator.Designer.cs">
-      <DependentUpon>201511232018407_company-donator.cs</DependentUpon>
+    <Compile Include="Migrations\201511232046082_AddedAjaxStuff.cs" />
+    <Compile Include="Migrations\201511232046082_AddedAjaxStuff.Designer.cs">
+      <DependentUpon>201511232046082_AddedAjaxStuff.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -268,8 +256,6 @@
     <Content Include="Views\AdminPanel\Index.cshtml" />
     <Content Include="Views\AdminPanel\ProjectDelete.cshtml" />
     <Content Include="Views\Account\FinishRegistration.cshtml" />
-    <Content Include="Views\Account\GetLoginView.cshtml" />
-    <Content Include="Views\Account\GetRegistrationView.cshtml" />
     <Content Include="Views\Account\OrganizationRegistration.cshtml" />
     <Content Include="Views\Account\DonatorRegistration.cshtml" />
     <Content Include="Views\Account\CompanyRegistration.cshtml" />
@@ -287,17 +273,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511162334162_1.resx">
-      <DependentUpon>201511162334162_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511181945339_Organization.resx">
-      <DependentUpon>201511181945339_Organization.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511182056227_registration.resx">
-      <DependentUpon>201511182056227_registration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511232018407_company-donator.resx">
-      <DependentUpon>201511232018407_company-donator.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511232046082_AddedAjaxStuff.resx">
+      <DependentUpon>201511232046082_AddedAjaxStuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
