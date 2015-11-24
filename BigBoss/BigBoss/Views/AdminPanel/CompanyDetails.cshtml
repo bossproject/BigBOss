@@ -1,0 +1,50 @@
+﻿@model BigBoss.Models.CompanyModel
+
+@{
+    ViewBag.Title = "CompanyDetails";
+}
+
+<h2>CompanyDetails</h2>
+
+<div>
+    <h4>CompanyModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaticniBroj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaticniBroj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delatnost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delatnost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PIB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PIB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "CompanyEdit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "CompanyIndex")
+</p>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BigBoss.Models.OrganizationModel>
+
+@{
+    ViewBag.Title = "OrganizationIndex";
+}
+
+<h2>OrganizationIndex</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaticniBroj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PIB)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaticniBroj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PIB)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "OrganizationEdit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "OrganizationDetails", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "OrganizationDelete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

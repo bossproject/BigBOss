@@ -259,6 +259,18 @@
     <Content Include="Views\Account\OrganizationRegistration.cshtml" />
     <Content Include="Views\Account\DonatorRegistration.cshtml" />
     <Content Include="Views\Account\CompanyRegistration.cshtml" />
+    <Content Include="Views\AdminPanel\DonatorsIndex.cshtml" />
+    <Content Include="Views\AdminPanel\DonatorEdit.cshtml" />
+    <Content Include="Views\AdminPanel\DonatorDetails.cshtml" />
+    <Content Include="Views\AdminPanel\DonatorDelete.cshtml" />
+    <Content Include="Views\AdminPanel\OrganizationIndex.cshtml" />
+    <Content Include="Views\AdminPanel\OrganizationEdit.cshtml" />
+    <Content Include="Views\AdminPanel\OrganizationDetails.cshtml" />
+    <Content Include="Views\AdminPanel\OrganizationDelete.cshtml" />
+    <Content Include="Views\AdminPanel\CompanyIndex.cshtml" />
+    <Content Include="Views\AdminPanel\CompanyEdit.cshtml" />
+    <Content Include="Views\AdminPanel\CompanyDetails.cshtml" />
+    <Content Include="Views\AdminPanel\CompanyDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

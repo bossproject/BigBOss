@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BigBoss.Models.DonatorModel>
+
+@{
+    ViewBag.Title = "DonatorsIndex";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaticniBroj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaticniBroj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "DonatorEdit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "DonatorDetails", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DonatorDelete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model BigBoss.Models.OrganizationModel
+
+@{
+    ViewBag.Title = "OrganizationDetails";
+}
+
+<h2>OrganizationDetails</h2>
+
+<div>
+    <h4>OrganizationModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaticniBroj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaticniBroj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PIB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PIB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "OrganizationEdit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "OrganizationIndex")
+</p>

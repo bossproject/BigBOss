@@ -128,7 +128,7 @@ namespace BigBoss.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ProjectEdit(ProjectEditViewModel kreiran, int categoryMod) {
-            
+
             int i = categoryMod;
 
             ProjectModel zaBazu = db.Project.Where(p => p.Id.Equals(kreiran.Id)).First();
@@ -142,23 +142,21 @@ namespace BigBoss.Controllers {
             zaBazu.moneyRaised = kreiran.moneyRaised;
             zaBazu.moneyWithCommission = kreiran.moneyWithCommission;
             zaBazu.numberOfDonations = kreiran.numberOfDonations;
-            
+
             await db.SaveChangesAsync();
             return RedirectToAction("ProjectIndex");
 
         }
 
         [HttpGet]
-        public ActionResult ProjectDelete(string id)
-        {
+        public ActionResult ProjectDelete(string id) {
             var proj = db.Project.Where(p => p.Id.Equals(id)).FirstOrDefault();
             return View(proj);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ProjectDelete(ProjectModel p)
-        {
+        public async Task<ActionResult> ProjectDelete(ProjectModel p) {
             var pro = await db.Project.Where(c => c.Id == p.Id).FirstOrDefaultAsync();
             db.Project.Remove(pro);
             await db.SaveChangesAsync();
@@ -166,5 +164,212 @@ namespace BigBoss.Controllers {
             return RedirectToAction("ProjectIndex");
         }
 
+        public ActionResult DonatorsIndex() {
+            return View(db.Donator.ToList());
+        }
+
+        public ActionResult DonatorEdit(string id) {
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            return View(db.Donator.Where(d => d.Id.Equals(id)).First());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DonatorEdit(DonatorModel model) {
+            if(!ModelState.IsValid) {
+                return View();
+            }
+
+            var editModel = db.Donator.Where(d => d.Id.Equals(model.Id)).First();
+
+            if(editModel == null) {
+                return View();
+            }
+
+            editModel.Id = model.Id;
+            editModel.MaticniBroj = model.MaticniBroj;
+            editModel.OrganizationName = model.OrganizationName;
+            editModel.street = model.street;
+            editModel.City = model.City;
+            editModel.Country = model.Country;
+            editModel.usersAplication = editModel.usersAplication;
+
+            await db.SaveChangesAsync();
+            return RedirectToAction("DonatorsIndex");
+        }
+
+        public ActionResult DonatorDetails(string id) {
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            return View(db.Donator.Where(d => d.Id.Equals(id)).First());
+        }
+
+        public ActionResult DonatorDelete(string id) {
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            return View(db.Donator.Where(d => d.Id.Equals(id)).First());
+        }
+
+        [HttpPost, ActionName("DonatorDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DonatorDeleteConfirmed(string id) {
+            if(!ModelState.IsValid) {
+                return View();
+            }
+
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var deleteModel = db.Donator.Where(d => d.Id.Equals(id)).First();
+
+            if(deleteModel == null) {
+                new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            //User FinishRegistration prebaciti na false
+            db.Donator.Remove(deleteModel);
+            db.SaveChanges();
+            return RedirectToAction("DonatorsIndex");
+        }
+
+        public ActionResult OrganizationIndex() {
+            return View(db.Organization.ToList());
+        }
+
+        public ActionResult OrganizationEdit(string id) {
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return View(db.Organization.Where(o => o.Id.Equals(id)).First());
+        }
+
+        public async Task<ActionResult> OrganizationEdit(OrganizationModel model) {
+            if(!ModelState.IsValid) {
+                return View();
+            }
+
+            var editModel = db.Organization.Where(o => o.Id.Equals(model.Id)).First();
+            editModel.Id = model.Id;
+            editModel.MaticniBroj = model.MaticniBroj;
+            editModel.OrganizationName = model.OrganizationName;
+            editModel.PIB = model.PIB;
+            editModel.usersAplication = model.usersAplication;
+
+            await db.SaveChangesAsync();
+            return RedirectToAction("OrganizationIndex");
+        }
+
+        public ActionResult OrganizationDetails(string id) {
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return View(db.Organization.Where(o => o.Id.Equals(id)).First());
+        }
+
+        public ActionResult OrganizationDelete(string id) {
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return View(db.Organization.Where(o => o.Id.Equals(id)).First());
+        }
+
+        [HttpPost, ActionName("OrganizationDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult OrganizationDeleteConfirmed(string id) {
+            if(!ModelState.IsValid) {
+                return View();
+            }
+
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var deleteModel = db.Organization.Where(o => o.Id.Equals(id)).First();
+
+            if(deleteModel == null) {
+                new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            db.Organization.Remove(deleteModel);
+            db.SaveChanges();
+            return RedirectToAction("OrganizationIndex");
+        }
+
+        public ActionResult CompanyIndex() {
+            return View(db.Company.ToList());
+        }
+
+        public ActionResult CompanyEdit(string id) {
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return View(db.Company.Where(c => c.Id.Equals(id)).First());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CompanyEdit(CompanyModel model) {
+            if(!ModelState.IsValid) {
+                return View();
+            }
+
+            var editModel = db.Company.Where(c => c.Id.Equals(model.Id)).First();
+
+            if(editModel == null) {
+                new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            editModel.Id = model.Id;
+            editModel.Delatnost = model.Delatnost;
+            editModel.MaticniBroj = model.MaticniBroj;
+            editModel.OrganizationName = model.OrganizationName;
+            editModel.PIB = model.PIB;
+            editModel.usersAplication = model.usersAplication;
+
+            await db.SaveChangesAsync();
+
+            return RedirectToAction("CompanyIndex");
+        }
+
+        public ActionResult CompanyDetails(string id) {
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return View(db.Company.Where(c => c.Id.Equals(id)).First());
+        }
+
+        public ActionResult CompanyDelete(string id) {
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return View(db.Company.Where(c => c.Id.Equals(id)).First());
+        }
+
+        [HttpPost, ActionName("CompanyDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CompanyDeleteConfirmed(string id) {
+            if(!ModelState.IsValid) {
+                return View();
+            }
+
+            if(id == null || id.Equals(string.Empty)) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var deleteModel = db.Company.Where(o => o.Id.Equals(id)).First();
+
+            if(deleteModel == null) {
+                new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            db.Company.Remove(deleteModel);
+            db.SaveChanges();
+            return RedirectToAction("OrganizationIndex");
+        }
     }
 }
