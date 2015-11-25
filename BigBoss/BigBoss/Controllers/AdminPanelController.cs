@@ -118,7 +118,7 @@ namespace BigBoss.Controllers {
             //    ViewBag.CatModel = lista;
             ProjectEditViewModel noviMod = new ProjectEditViewModel();
             noviMod.Id = mod.Id;
-            noviMod.listaKaregorija = new SelectList(db.Category.ToList(), "Id", "nameCategory", mod.categoryMod.nameCategory);
+            noviMod.listaKaregorija = new SelectList(db.Category.ToList(), "Id", "nameCategory", mod.categoryMod);
             noviMod.categoryMod = mod.categoryMod;
             noviMod.nameProject = mod.nameProject;
             // model.OrderTemplates = new SelectList(db.OrderTemplates, "OrderTemplateId", "OrderTemplateName", 1);

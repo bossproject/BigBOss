@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BigBoss.Models;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BigBoss.Controllers {
     public class HomeController : Controller {
+
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index() {
-            return View();
+            return View(db.Project.ToList());
         }
 
         public ActionResult About() {
