@@ -9,31 +9,48 @@
 <p>
     @Html.ActionLink("Create New", "CategoryCreate")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nameCategory)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.descriptionCategory)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nameCategory)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.descriptionCategory)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "CategoryEdit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "CategoryDetails", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "CategoryDelete", new { id=item.Id })
-        </td>
-    </tr>
-}
+
+
+<table class="table" id="example">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nameCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descriptionCategory)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nameCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descriptionCategory)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "CategoryEdit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "CategoryDetails", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "CategoryDelete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
+<script type="text/javascript">
+    $(function () {
+        $("#example").dataTable();
+    })
+</script>
+@section scripts{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css ">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+
+}
