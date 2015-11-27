@@ -176,9 +176,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511232046082_AddedAjaxStuff.cs" />
-    <Compile Include="Migrations\201511232046082_AddedAjaxStuff.Designer.cs">
-      <DependentUpon>201511232046082_AddedAjaxStuff.cs</DependentUpon>
+    <Compile Include="Migrations\201511272107144_posleskidanja.cs" />
+    <Compile Include="Migrations\201511272107144_posleskidanja.Designer.cs">
+      <DependentUpon>201511272107144_posleskidanja.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -443,8 +443,8 @@
     <Content Include="Scripts\jquery-2.1.4.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511232046082_AddedAjaxStuff.resx">
-      <DependentUpon>201511232046082_AddedAjaxStuff.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511272107144_posleskidanja.resx">
+      <DependentUpon>201511272107144_posleskidanja.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

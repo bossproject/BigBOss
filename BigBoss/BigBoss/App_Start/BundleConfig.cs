@@ -23,6 +23,11 @@ namespace BigBoss {
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dataTables").Include(
+                      "~/Scripts/DataTables/jquery.datatables.min.js",
+                      "~/Scripts/DataTables/datatables.bootstrap.min.js"
+                ));
         }
     }
 }
