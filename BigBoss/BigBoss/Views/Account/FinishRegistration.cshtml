@@ -1,35 +1,4 @@
-﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#userRegistration').change(function () {
-            var url = '/Account/DonatorRegistration';
-            $("#GetView").fadeOut('fast', function () {
-                $("#GetView").load(url, function () {
-                    $("#GetView").fadeIn('slow');
-                });
-            });
-        });
-
-        $('#organizationRegistration').change(function () {
-            var url = '/Account/OrganizationRegistration';
-            $("#GetView").fadeOut('fast', function () {
-                $("#GetView").load(url, function () {
-                    $("#GetView").fadeIn('slow');
-                });
-            });
-        });
-
-        $('#companyRegistration').change(function () {
-            var url = '/Account/CompanyRegistration';
-            $("#GetView").fadeOut('fast', function () {
-                $("#GetView").load(url, function () {
-                    $("#GetView").fadeIn('slow');
-                });
-            });
-        });
-    });
-</script>
-
+﻿<script src="~/scripts/finishregistration.js"></script>
 
 @{
     ViewBag.Title = "FinishRegistration";
@@ -38,15 +7,16 @@
 <h2>FinishRegistration</h2>
 
 <div><h3>What are you?</h3></div>
-@Html.RadioButton("rb", "True", new { id = "userRegistration" })
+
+@Html.RadioButton("rb", "False", new { id = "userRegistration", onchange= "show('#GetView', '/Account/DonatorRegistration')" })
 <label>
     User
 </label>
-@Html.RadioButton("rb", "False", new { id = "organizationRegistration" })
+@Html.RadioButton("rb", "False", new { id = "organizationRegistration", onchange = "show('#GetView', '/Account/OrganizationRegistration')" })
 <label>
     Organization
 </label>
-@Html.RadioButton("rb", "False", new { id = "companyRegistration" })
+@Html.RadioButton("rb", "False", new { id = "companyRegistration", onchange = "show('#GetView', '/Account/CompanyRegistration')" })
 <label>
     Company
 </label>
