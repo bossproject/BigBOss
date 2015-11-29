@@ -23,7 +23,7 @@ namespace BigBoss.Models
         [Display(Name = "PIB")]
         public string PIB { get; set; }
 
-        public ApplicationUser usersAplication { get; set; }
+        public virtual ApplicationUser usersAplication { get; set; }
     }
 
     public class DonatorModel
@@ -51,7 +51,7 @@ namespace BigBoss.Models
         [Display(Name = "City")]
         public string City { get; set; }
 
-        public ApplicationUser usersAplication { get; set; }
+        public virtual ApplicationUser usersAplication { get; set; }
     }
 
     public class CompanyModel
@@ -75,7 +75,7 @@ namespace BigBoss.Models
         [Display(Name = "PIB")]
         public string PIB { get; set; }
 
-        public ApplicationUser usersAplication { get; set; }
+        public virtual ApplicationUser usersAplication { get; set; }
     }
 
 }

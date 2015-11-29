@@ -1,4 +1,5 @@
 ﻿using BigBoss.Models;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 namespace BigBoss.Controllers {
     public class AdminPanelController : Controller {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
         // GET: AdminPanel
         public ActionResult Index() {
             return View();
@@ -216,7 +218,9 @@ namespace BigBoss.Controllers {
 
         [HttpPost, ActionName("DonatorDelete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DonatorDeleteConfirmed(string id) {
+        public async Task<ActionResult> DonatorDeleteConfirmed(string id) {
+            var adb = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             if(!ModelState.IsValid) {
                 return View();
             }
@@ -225,14 +229,17 @@ namespace BigBoss.Controllers {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var deleteModel = db.Donator.Where(d => d.Id.Equals(id)).First();
-
+            var deleteModel = adb.Donator.Where(d => d.Id.Equals(id)).First();
+            
             if(deleteModel == null) {
                 new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             //User FinishRegistration prebaciti na false
-            db.Donator.Remove(deleteModel);
-            db.SaveChanges();
+            var user = deleteModel.usersAplication;
+            adb.Users.Attach(user);
+            await userManager.DeleteAsync(user);
+            adb.Donator.Remove(deleteModel);
+            adb.SaveChanges();
             return RedirectToAction("DonatorsIndex");
         }
 
@@ -279,7 +286,9 @@ namespace BigBoss.Controllers {
 
         [HttpPost, ActionName("OrganizationDelete")]
         [ValidateAntiForgeryToken]
-        public ActionResult OrganizationDeleteConfirmed(string id) {
+        public async Task<ActionResult> OrganizationDeleteConfirmed(string id) {
+            var adb = HttpContext.GetOwinContext().Get<ApplicationDbContext>(); //TRASH NAČIN ALI RADI
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             if(!ModelState.IsValid) {
                 return View();
             }
@@ -288,12 +297,14 @@ namespace BigBoss.Controllers {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var deleteModel = db.Organization.Where(o => o.Id.Equals(id)).First();
+            var deleteModel = adb.Organization.Where(o => o.Id.Equals(id)).First();
 
             if(deleteModel == null) {
                 new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
-
+            var user = deleteModel.usersAplication;
+            adb.Users.Attach(user);
+            await userManager.DeleteAsync(user);
             db.Organization.Remove(deleteModel);
             db.SaveChanges();
             return RedirectToAction("OrganizationIndex");
@@ -352,7 +363,9 @@ namespace BigBoss.Controllers {
 
         [HttpPost, ActionName("CompanyDelete")]
         [ValidateAntiForgeryToken]
-        public ActionResult CompanyDeleteConfirmed(string id) {
+        public async Task<ActionResult> CompanyDeleteConfirmed(string id) {
+            var adb = HttpContext.GetOwinContext().Get<ApplicationDbContext>(); //TRASH NAČIN ALI RADI
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             if(!ModelState.IsValid) {
                 return View();
             }
@@ -366,7 +379,9 @@ namespace BigBoss.Controllers {
             if(deleteModel == null) {
                 new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
-
+            var user = deleteModel.usersAplication;
+            adb.Users.Attach(user);
+            await userManager.DeleteAsync(user);
             db.Company.Remove(deleteModel);
             db.SaveChanges();
             return RedirectToAction("OrganizationIndex");

@@ -72,8 +72,8 @@ namespace BigBoss.Controllers {
                 if(model.usersAplication != null) {
                     model.Id = Guid.NewGuid().ToString();
                     db.Donator.Add(model);
-                    await db.SaveChangesAsync();
                     UserManager.FindById(User.Identity.GetUserId()).FinishedRegistration = true;
+                    await db.SaveChangesAsync();
                 }
             }
             return RedirectToAction("Index", "Manage");
@@ -88,8 +88,8 @@ namespace BigBoss.Controllers {
                 if(model.usersAplication != null) {
                     model.Id = Guid.NewGuid().ToString();
                     db.Organization.Add(model);
-                    await db.SaveChangesAsync();
                     UserManager.FindById(User.Identity.GetUserId()).FinishedRegistration = true;
+                    await db.SaveChangesAsync();
                 }
             }
             return RedirectToAction("Index", "Manage");
@@ -104,8 +104,8 @@ namespace BigBoss.Controllers {
                 if(model.usersAplication != null) {
                     model.Id = Guid.NewGuid().ToString();
                     db.Company.Add(model);
-                    await db.SaveChangesAsync();
                     UserManager.FindById(User.Identity.GetUserId()).FinishedRegistration = true;
+                    await db.SaveChangesAsync();
                 }
             }
             return RedirectToAction("Index", "Manage");
