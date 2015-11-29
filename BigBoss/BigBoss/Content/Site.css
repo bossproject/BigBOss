@@ -22,3 +22,16 @@ select,
 textarea {
     max-width: 480px;
 }
+
+.bottom-text{
+    position: absolute;
+    bottom: 5px;
+    left: 2px;
+}
+
+.bottom-progress{
+    position: absolute;
+    bottom: 5px;
+    left: 2px;
+    width: 99%;
+}
