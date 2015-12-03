@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -40,6 +41,9 @@ namespace BigBoss.Models
         public int numberOfDonations { get; set; }
 
         [Display(Name = "Category")]
-        public CategoryModel categoryMod { get; set; }
+        [ForeignKey("categoryMod")]
+        public int CategoryID { get; set; }
+
+        public virtual CategoryModel categoryMod { get; set; }
     }
 }
