@@ -93,6 +93,8 @@ namespace BigBoss.Controllers
             return RedirectToAction("CategoryIndex");
         }
 
+
+
         //----------- Project controll ------------
 
         public ActionResult RoleIndex()
@@ -114,7 +116,7 @@ namespace BigBoss.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ProjectCreate(ProjectModel modelProj, int? categoryMod)
+        public async Task<ActionResult> ProjectCreate(ProjectModel modelProj)
         {
             modelProj.Id = Guid.NewGuid().ToString();
             //modelProj.categoryMod = db.Category.Where(c => c.Id == categoryMod).FirstOrDefault();
@@ -171,6 +173,16 @@ namespace BigBoss.Controllers
             TempData["success_msg_proj"] = "Project successfully deleted!";
             return RedirectToAction("ProjectIndex");
         }
+
+        public async Task<ActionResult> ProjectDetails(string id)
+        {
+            ProjectModel projectModel = await db.Project.FindAsync(id);
+            return View(projectModel);
+        }
+
+
+        //------------------------ Donator -----------------
+
 
         public ActionResult DonatorsIndex()
         {

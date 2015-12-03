@@ -432,6 +432,7 @@
     <Content Include="Views\AdminPanel\CompanyEdit.cshtml" />
     <Content Include="Views\AdminPanel\CompanyDetails.cshtml" />
     <Content Include="Views\AdminPanel\CompanyDelete.cshtml" />
+    <Content Include="Views\AdminPanel\ProjectDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
