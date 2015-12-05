@@ -9,37 +9,30 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BigBoss.Controllers
-{
-    public class AdminPanelController : Controller
-    {
+namespace BigBoss.Controllers {
+    public class AdminPanelController : Controller {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: AdminPanel
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             return View();
         }
 
         //----------- Category controll -----------
 
-        public ActionResult CategoryIndex()
-        {
+        public ActionResult CategoryIndex() {
             var lista = db.Category.ToList();
             return View(db.Category.ToList());
         }
 
-        public ActionResult CategoryCreate()
-        {
+        public ActionResult CategoryCreate() {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CategoryCreate(CategoryModel catModel)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<ActionResult> CategoryCreate(CategoryModel catModel) {
+            if(ModelState.IsValid) {
                 db.Category.Add(catModel);
                 await db.SaveChangesAsync();
                 TempData["success_msg"] = "Category saved!";
@@ -48,10 +41,8 @@ namespace BigBoss.Controllers
             return View();
         }
 
-        public ActionResult CategoryEdit(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult CategoryEdit(int? id) {
+            if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var cat = db.Category.Where(c => c.Id == id).FirstOrDefault();
@@ -60,10 +51,8 @@ namespace BigBoss.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CategoryEdit([Bind(Include = "Id, nameCategory, descriptionCategory")] CategoryModel cat)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<ActionResult> CategoryEdit([Bind(Include = "Id, nameCategory, descriptionCategory")] CategoryModel cat) {
+            if(ModelState.IsValid) {
                 db.Entry(cat).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 TempData["success_msg"] = "Category saved!";
@@ -73,9 +62,8 @@ namespace BigBoss.Controllers
             return View();
         }
 
-        public ActionResult CategoryDelete(int? id)
-        {
-            if (id == null)
+        public ActionResult CategoryDelete(int? id) {
+            if(id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var cat = db.Category.Where(c => c.Id == id).FirstOrDefault();
 
@@ -84,8 +72,7 @@ namespace BigBoss.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CategoryDelete(int id)
-        {
+        public async Task<ActionResult> CategoryDelete(int id) {
             var cat = db.Category.Where(c => c.Id == id).FirstOrDefault();
             db.Category.Remove(cat);
             await db.SaveChangesAsync();
@@ -97,34 +84,29 @@ namespace BigBoss.Controllers
 
         //----------- Project controll ------------
 
-        public ActionResult RoleIndex()
-        {
+        public ActionResult RoleIndex() {
             return View(db.Roles.ToList());
         }
 
-        public ActionResult ProjectIndex()
-        {
+        public ActionResult ProjectIndex() {
             var projectList = db.Project.Include(c => c.categoryMod).ToList();
             return View(projectList);
         }
 
-        public ActionResult ProjectCreate()
-        {
+        public ActionResult ProjectCreate() {
             ViewBag.CategoryID = new SelectList(db.Category.ToList(), "Id", "nameCategory");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ProjectCreate(ProjectModel modelProj)
-        {
+        public async Task<ActionResult> ProjectCreate(ProjectModel modelProj) {
             modelProj.Id = Guid.NewGuid().ToString();
             //modelProj.categoryMod = db.Category.Where(c => c.Id == categoryMod).FirstOrDefault();
             //modelProj.moneyWithCommission = (modelProj.money / 100) * 104;
             //modelProj.moneyRaised = 0;
             //modelProj.numberOfDonations = 0;
-            if (ModelState.IsValid)
-            {
+            if(ModelState.IsValid) {
                 db.Project.Add(modelProj);
                 await db.SaveChangesAsync();
                 return RedirectToAction("ProjectIndex");
@@ -133,8 +115,7 @@ namespace BigBoss.Controllers
             return View(modelProj);
         }
 
-        public async Task<ActionResult> ProjectEdit(string id)
-        {
+        public async Task<ActionResult> ProjectEdit(string id) {
 
             ProjectModel mod = await db.Project.FindAsync(id);
             ViewBag.CategoryID = new SelectList(db.Category.ToList(), "Id", "nameCategory", mod.CategoryID);
@@ -143,10 +124,8 @@ namespace BigBoss.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ProjectEdit(ProjectModel kreiran)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<ActionResult> ProjectEdit(ProjectModel kreiran) {
+            if(ModelState.IsValid) {
                 db.Entry(kreiran).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 TempData["message"] = "Project successfully saved!";
@@ -157,16 +136,14 @@ namespace BigBoss.Controllers
         }
 
         [HttpGet]
-        public ActionResult ProjectDelete(string id)
-        {
+        public ActionResult ProjectDelete(string id) {
             var proj = db.Project.Where(p => p.Id.Equals(id)).FirstOrDefault();
             return View(proj);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ProjectDelete(ProjectModel p)
-        {
+        public async Task<ActionResult> ProjectDelete(ProjectModel p) {
             var pro = await db.Project.Where(c => c.Id == p.Id).FirstOrDefaultAsync();
             db.Project.Remove(pro);
             await db.SaveChangesAsync();
@@ -174,9 +151,10 @@ namespace BigBoss.Controllers
             return RedirectToAction("ProjectIndex");
         }
 
-        public async Task<ActionResult> ProjectDetails(string id)
-        {
+        public async Task<ActionResult> ProjectDetails(string id) {
             ProjectModel projectModel = await db.Project.FindAsync(id);
+            Response.Write(renderContent("<img>http://i.imgur.com/fnziipt.jpg</img> <br /> <br />" + 
+                "<code>Zelena slova!!!</code>"));
             return View(projectModel);
         }
 
@@ -184,15 +162,12 @@ namespace BigBoss.Controllers
         //------------------------ Donator -----------------
 
 
-        public ActionResult DonatorsIndex()
-        {
+        public ActionResult DonatorsIndex() {
             return View(db.Donator.ToList());
         }
 
-        public ActionResult DonatorEdit(string id)
-        {
-            if (id == null || id.Equals(string.Empty))
-            {
+        public ActionResult DonatorEdit(string id) {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             return View(db.Donator.Where(d => d.Id.Equals(id)).First());
@@ -200,17 +175,14 @@ namespace BigBoss.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DonatorEdit(DonatorModel model)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<ActionResult> DonatorEdit(DonatorModel model) {
+            if(!ModelState.IsValid) {
                 return View();
             }
 
             var editModel = db.Donator.Where(d => d.Id.Equals(model.Id)).First();
 
-            if (editModel == null)
-            {
+            if(editModel == null) {
                 return View();
             }
 
@@ -226,19 +198,15 @@ namespace BigBoss.Controllers
             return RedirectToAction("DonatorsIndex");
         }
 
-        public ActionResult DonatorDetails(string id)
-        {
-            if (id == null || id.Equals(string.Empty))
-            {
+        public ActionResult DonatorDetails(string id) {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             return View(db.Donator.Where(d => d.Id.Equals(id)).First());
         }
 
-        public ActionResult DonatorDelete(string id)
-        {
-            if (id == null || id.Equals(string.Empty))
-            {
+        public ActionResult DonatorDelete(string id) {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             return View(db.Donator.Where(d => d.Id.Equals(id)).First());
@@ -246,24 +214,20 @@ namespace BigBoss.Controllers
 
         [HttpPost, ActionName("DonatorDelete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DonatorDeleteConfirmed(string id)
-        {
+        public async Task<ActionResult> DonatorDeleteConfirmed(string id) {
             var adb = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
             var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            if (!ModelState.IsValid)
-            {
+            if(!ModelState.IsValid) {
                 return View();
             }
 
-            if (id == null || id.Equals(string.Empty))
-            {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var deleteModel = adb.Donator.Where(d => d.Id.Equals(id)).First();
 
-            if (deleteModel == null)
-            {
+            if(deleteModel == null) {
                 new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             //User FinishRegistration prebaciti na false
@@ -275,24 +239,19 @@ namespace BigBoss.Controllers
             return RedirectToAction("DonatorsIndex");
         }
 
-        public ActionResult OrganizationIndex()
-        {
+        public ActionResult OrganizationIndex() {
             return View(db.Organization.ToList());
         }
 
-        public ActionResult OrganizationEdit(string id)
-        {
-            if (id == null || id.Equals(string.Empty))
-            {
+        public ActionResult OrganizationEdit(string id) {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             return View(db.Organization.Where(o => o.Id.Equals(id)).First());
         }
 
-        public async Task<ActionResult> OrganizationEdit(OrganizationModel model)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<ActionResult> OrganizationEdit(OrganizationModel model) {
+            if(!ModelState.IsValid) {
                 return View();
             }
 
@@ -307,19 +266,15 @@ namespace BigBoss.Controllers
             return RedirectToAction("OrganizationIndex");
         }
 
-        public ActionResult OrganizationDetails(string id)
-        {
-            if (id == null || id.Equals(string.Empty))
-            {
+        public ActionResult OrganizationDetails(string id) {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             return View(db.Organization.Where(o => o.Id.Equals(id)).First());
         }
 
-        public ActionResult OrganizationDelete(string id)
-        {
-            if (id == null || id.Equals(string.Empty))
-            {
+        public ActionResult OrganizationDelete(string id) {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             return View(db.Organization.Where(o => o.Id.Equals(id)).First());
@@ -327,24 +282,20 @@ namespace BigBoss.Controllers
 
         [HttpPost, ActionName("OrganizationDelete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> OrganizationDeleteConfirmed(string id)
-        {
+        public async Task<ActionResult> OrganizationDeleteConfirmed(string id) {
             var adb = HttpContext.GetOwinContext().Get<ApplicationDbContext>(); //TRASH NAČIN ALI RADI
             var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            if (!ModelState.IsValid)
-            {
+            if(!ModelState.IsValid) {
                 return View();
             }
 
-            if (id == null || id.Equals(string.Empty))
-            {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var deleteModel = adb.Organization.Where(o => o.Id.Equals(id)).First();
 
-            if (deleteModel == null)
-            {
+            if(deleteModel == null) {
                 new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             var user = deleteModel.usersAplication;
@@ -355,15 +306,12 @@ namespace BigBoss.Controllers
             return RedirectToAction("OrganizationIndex");
         }
 
-        public ActionResult CompanyIndex()
-        {
+        public ActionResult CompanyIndex() {
             return View(db.Company.ToList());
         }
 
-        public ActionResult CompanyEdit(string id)
-        {
-            if (id == null || id.Equals(string.Empty))
-            {
+        public ActionResult CompanyEdit(string id) {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
@@ -372,17 +320,14 @@ namespace BigBoss.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CompanyEdit(CompanyModel model)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<ActionResult> CompanyEdit(CompanyModel model) {
+            if(!ModelState.IsValid) {
                 return View();
             }
 
             var editModel = db.Company.Where(c => c.Id.Equals(model.Id)).First();
 
-            if (editModel == null)
-            {
+            if(editModel == null) {
                 new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
@@ -398,19 +343,15 @@ namespace BigBoss.Controllers
             return RedirectToAction("CompanyIndex");
         }
 
-        public ActionResult CompanyDetails(string id)
-        {
-            if (id == null || id.Equals(string.Empty))
-            {
+        public ActionResult CompanyDetails(string id) {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             return View(db.Company.Where(c => c.Id.Equals(id)).First());
         }
 
-        public ActionResult CompanyDelete(string id)
-        {
-            if (id == null || id.Equals(string.Empty))
-            {
+        public ActionResult CompanyDelete(string id) {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             return View(db.Company.Where(c => c.Id.Equals(id)).First());
@@ -418,24 +359,20 @@ namespace BigBoss.Controllers
 
         [HttpPost, ActionName("CompanyDelete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CompanyDeleteConfirmed(string id)
-        {
+        public async Task<ActionResult> CompanyDeleteConfirmed(string id) {
             var adb = HttpContext.GetOwinContext().Get<ApplicationDbContext>(); //TRASH NAČIN ALI RADI
             var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            if (!ModelState.IsValid)
-            {
+            if(!ModelState.IsValid) {
                 return View();
             }
 
-            if (id == null || id.Equals(string.Empty))
-            {
+            if(id == null || id.Equals(string.Empty)) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var deleteModel = db.Company.Where(o => o.Id.Equals(id)).First();
 
-            if (deleteModel == null)
-            {
+            if(deleteModel == null) {
                 new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             var user = deleteModel.usersAplication;
@@ -445,5 +382,15 @@ namespace BigBoss.Controllers
             db.SaveChanges();
             return RedirectToAction("OrganizationIndex");
         }
+
+        private string renderContent(string content) {
+            content = content.Replace("<img>", "<img class='col-md-offset-3' src='");
+            content = content.Replace("</img>", "' />");
+            content = content.Replace("<code>", "<p class='col-md-offset-3'><font color='#006600'>");
+            content = content.Replace("</code>", "</font></p>");
+            return content;
+        }
     }
 }
+
+//WHAT ARE YOU? CASUL?
