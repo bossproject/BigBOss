@@ -10,7 +10,7 @@
 
 <div class="row">
     @foreach(BigBoss.Models.ProjectModel p in Model.ToList()) {
-        <a href="@Url.Action("ProjectEdit", "AdminPanel", new {id = p.Id})" class="col-md-4" style="padding:unset; max-width: 370px;  margin-left: 15px;">
+        <a href="@Url.Action("Show", "Project", new {id = p.Id})" class="col-md-4" style="padding:unset; max-width: 370px;  margin-left: 15px;">
             <div style="position: relative; font-size: 12px; height: 350px; border: 1px solid grey; border-radius: 5px;">
                 <div style="position: relative; background-color: #999999; height: 150px;"></div>
                 <div class="bottom-text">@p.nameProject &emsp; Donations: @p.numberOfDonations</div>

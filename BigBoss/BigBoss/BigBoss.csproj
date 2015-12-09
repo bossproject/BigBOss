@@ -173,6 +173,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -433,6 +434,8 @@
     <Content Include="Views\AdminPanel\CompanyDetails.cshtml" />
     <Content Include="Views\AdminPanel\CompanyDelete.cshtml" />
     <Content Include="Views\AdminPanel\ProjectDetails.cshtml" />
+    <Content Include="Views\Project\Show.cshtml" />
+    <Content Include="Views\Project\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
