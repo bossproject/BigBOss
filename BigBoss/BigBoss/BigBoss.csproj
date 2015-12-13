@@ -177,9 +177,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512032031222_z.cs" />
-    <Compile Include="Migrations\201512032031222_z.Designer.cs">
-      <DependentUpon>201512032031222_z.cs</DependentUpon>
+    <Compile Include="Migrations\201512131315269_kaatata.cs" />
+    <Compile Include="Migrations\201512131315269_kaatata.Designer.cs">
+      <DependentUpon>201512131315269_kaatata.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -447,8 +447,8 @@
     <Content Include="Scripts\jquery-2.1.4.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512032031222_z.resx">
-      <DependentUpon>201512032031222_z.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512131315269_kaatata.resx">
+      <DependentUpon>201512131315269_kaatata.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

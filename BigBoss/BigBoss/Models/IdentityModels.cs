@@ -58,5 +58,6 @@ namespace BigBoss.Models
         public DbSet<DonatorModel> Donator { get; set; }
         public DbSet<CompanyModel> Company { get; set; }
         //public DbSet<Role> IdentityRoles { get; set; }
+        public DbSet<ProjectDeleteModel> DeletedProject { get; set; }
     }
 }

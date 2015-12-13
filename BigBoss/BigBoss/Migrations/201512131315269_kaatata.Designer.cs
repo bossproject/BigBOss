@@ -7,13 +7,13 @@ namespace BigBoss.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class z : IMigrationMetadata
+    public sealed partial class kaatata : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(z));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(kaatata));
         
         string IMigrationMetadata.Id
         {
-            get { return "201512032031222_z"; }
+            get { return "201512131315269_kaatata"; }
         }
         
         string IMigrationMetadata.Source
