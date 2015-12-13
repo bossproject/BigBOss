@@ -1,4 +1,4 @@
-﻿@model BigBoss.Models.DonatorModel
+﻿@model BigBoss.Models.DonatorViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <div>
-    <h4>DonatorModel</h4>
+    <h4>DonatorViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -49,13 +49,23 @@
         <dd>
             @Html.DisplayFor(model => model.City)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.usersAplication.Email)
+            @Html.DisplayNameFor(model => model.TotalDonations)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.usersAplication.Email)
+            @Html.DisplayFor(model => model.TotalDonations)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfDonations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfDonations)
+        </dd>
+
     </dl>
 </div>
 <p>

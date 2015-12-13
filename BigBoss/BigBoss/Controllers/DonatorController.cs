@@ -28,11 +28,19 @@ namespace BigBoss.Controllers {
         public async Task<ActionResult> Index() {
             string id = User.Identity.GetUserId();
             var user = await db.Donator.Where(u => u.usersAplication.Id.Equals(id)).Include("usersAplication").FirstAsync();
-            //user.ToString();
-            //if(user == null) {
-            //    return View("Error");
-            //}
-            return View(user);
+            if(user == null) {
+                return View("Error");
+            }
+            DonatorViewModel donator = new DonatorViewModel() {
+                Id = user.Id, City = user.City,
+                NumberOfDonations = user.NumberOfDonations,
+                Country = user.Country,
+                MaticniBroj = user.MaticniBroj,
+                OrganizationName = user.OrganizationName,
+                street = user.street,
+                TotalDonations = user.TotalDonations
+            };
+            return View(donator);
         }
     }
 }

@@ -67,6 +67,8 @@ namespace BigBoss.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DonatorRegistration(DonatorModel model) {
             ApplicationDbContext db = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+            model.TotalDonations = 0;
+            model.NumberOfDonations = 0;
             if(ModelState.IsValid) {
                 model.usersAplication = UserManager.FindById(User.Identity.GetUserId());
                 if(model.usersAplication != null) {
