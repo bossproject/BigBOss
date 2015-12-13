@@ -171,6 +171,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DonatorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminPanelViewModels.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\DonatorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrganizationModel.cs" />
@@ -436,6 +438,7 @@
     <Content Include="Views\AdminPanel\ProjectDetails.cshtml" />
     <Content Include="Views\Project\Show.cshtml" />
     <Content Include="Views\Project\Search.cshtml" />
+    <Content Include="Views\Donator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

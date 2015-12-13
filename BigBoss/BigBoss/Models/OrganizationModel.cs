@@ -51,6 +51,14 @@ namespace BigBoss.Models
         [Display(Name = "City")]
         public string City { get; set; }
 
+        [Required]
+        [Display(Name = "Total donations")]
+        public decimal TotalDonations { get; set; }
+
+        [Required]
+        [Display(Name = "Number of donations")]
+        public int NumberOfDonations { get; set; }
+
         public virtual ApplicationUser usersAplication { get; set; }
     }
 
