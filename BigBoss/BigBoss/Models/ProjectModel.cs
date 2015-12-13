@@ -40,6 +40,10 @@ namespace BigBoss.Models
         [Display(Name = "Number of donations")]
         public int numberOfDonations { get; set; }
 
+        [Required]
+        [Display(Name = "Suspended")]
+        public bool suspended { get; set; }
+
         [Display(Name = "Category")]
         [ForeignKey("categoryMod")]
         public int? CategoryID { get; set; }
@@ -79,6 +83,10 @@ namespace BigBoss.Models
 
         [Display(Name = "Number of donations")]
         public int numberOfDonations { get; set; }
+
+        [Required]
+        [Display(Name = "Suspended")]
+        public bool suspended { get; set; }
 
         [Display(Name = "Category")]
         [ForeignKey("categoryMod")]

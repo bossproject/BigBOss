@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BigBoss.Models.ProjectDeleteModel>
+
+@{
+    ViewBag.Title = "DeletedProjects";
+}
+
+<h2>DeletedProjects</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.categoryMod.nameCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nameProject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.money)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.moneyWithCommission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.moneyRaised)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numberOfDonations)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoryMod.nameCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nameProject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.money)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.moneyWithCommission)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.moneyRaised)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numberOfDonations)
+            </td>
+            <td>
+                @using (Html.BeginForm("DeletePermanentlyProject", "AdminPanel", new { id = item.Id }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-default" })
+                    <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete permanently this project?')" />
+                }
+            </td>
+        </tr>
+    }
+
+</table>

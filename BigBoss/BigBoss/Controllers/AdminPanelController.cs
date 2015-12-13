@@ -176,6 +176,29 @@ namespace BigBoss.Controllers {
         }
 
 
+
+        public ActionResult DeletedProjects()
+        {
+            var lista = db.DeletedProject.ToList();
+            return View(lista);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeletePermanentlyProject(string id)
+        {
+            if(string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var dele = await db.DeletedProject.Where(p => p.Id == id).FirstAsync();
+            db.DeletedProject.Remove(dele);
+            await db.SaveChangesAsync();
+            return RedirectToAction("DeletedProjects");
+
+        }
+
+
         //------------------------ Donator -----------------
 
 
