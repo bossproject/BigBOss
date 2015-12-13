@@ -66,7 +66,7 @@ namespace BigBoss.Controllers {
             if(id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var cat = db.Category.Where(c => c.Id == id).FirstOrDefault();
-
+            
             return View(cat);
         }
 
@@ -74,6 +74,8 @@ namespace BigBoss.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CategoryDelete(int id) {
             var cat = db.Category.Where(c => c.Id == id).FirstOrDefault();
+            await db.Project.Where(p => p.CategoryID == id).ForEachAsync(p => p.CategoryID = null);
+            await db.DeletedProject.Where(p => p.CategoryID == id).ForEachAsync(p => p.CategoryID = null);
             db.Category.Remove(cat);
             await db.SaveChangesAsync();
             TempData["success_msg"] = "Category deleted!";
@@ -145,6 +147,21 @@ namespace BigBoss.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ProjectDelete(ProjectModel p) {
             var pro = await db.Project.Where(c => c.Id == p.Id).FirstOrDefaultAsync();
+            var dele = new ProjectDeleteModel()
+            {
+                Id = pro.Id,
+                additionalInfo = pro.additionalInfo,
+                CategoryID = pro.CategoryID,
+                descProject = pro.descProject,
+                money = pro.money,
+                moneyRaised = pro.moneyRaised,
+                moneyWithCommission = pro.moneyWithCommission,
+                nameProject = pro.nameProject,
+                numberOfDonations = pro.numberOfDonations,
+                tagsProject = pro.tagsProject
+
+            };
+            db.DeletedProject.Add(dele);
             db.Project.Remove(pro);
             await db.SaveChangesAsync();
             TempData["success_msg_proj"] = "Project successfully deleted!";

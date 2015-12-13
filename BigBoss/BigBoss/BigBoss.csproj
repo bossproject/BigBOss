@@ -171,22 +171,20 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\DonatorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512032031222_z.cs" />
-    <Compile Include="Migrations\201512032031222_z.Designer.cs">
-      <DependentUpon>201512032031222_z.cs</DependentUpon>
+    <Compile Include="Migrations\201512131315269_kaatata.cs" />
+    <Compile Include="Migrations\201512131315269_kaatata.Designer.cs">
+      <DependentUpon>201512131315269_kaatata.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminPanelViewModels.cs" />
     <Compile Include="Models\CategoryModel.cs" />
-    <Compile Include="Models\DonatorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrganizationModel.cs" />
@@ -438,7 +436,6 @@
     <Content Include="Views\AdminPanel\ProjectDetails.cshtml" />
     <Content Include="Views\Project\Show.cshtml" />
     <Content Include="Views\Project\Search.cshtml" />
-    <Content Include="Views\Donator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -450,8 +447,8 @@
     <Content Include="Scripts\jquery-2.1.4.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512032031222_z.resx">
-      <DependentUpon>201512032031222_z.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512131315269_kaatata.resx">
+      <DependentUpon>201512131315269_kaatata.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
