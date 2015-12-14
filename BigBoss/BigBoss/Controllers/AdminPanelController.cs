@@ -158,7 +158,8 @@ namespace BigBoss.Controllers {
                 moneyWithCommission = pro.moneyWithCommission,
                 nameProject = pro.nameProject,
                 numberOfDonations = pro.numberOfDonations,
-                tagsProject = pro.tagsProject
+                tagsProject = pro.tagsProject,
+                suspended = true
 
             };
             db.DeletedProject.Add(dele);
@@ -197,6 +198,38 @@ namespace BigBoss.Controllers {
             return RedirectToAction("DeletedProjects");
 
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ReturnDeletedProject(string id)
+        {
+            if(string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var dele = await db.DeletedProject.Where(c => c.Id == id).FirstOrDefaultAsync();
+            var pro = new ProjectModel()
+            {
+                Id = dele.Id,
+                additionalInfo = dele.additionalInfo,
+                CategoryID = dele.CategoryID,
+                descProject = dele.descProject,
+                money = dele.money,
+                moneyRaised = dele.moneyRaised,
+                moneyWithCommission = dele.moneyWithCommission,
+                nameProject = dele.nameProject,
+                numberOfDonations = dele.numberOfDonations,
+                tagsProject = dele.tagsProject,
+                suspended = true
+
+            };
+            db.DeletedProject.Remove(dele);
+            db.Project.Add(pro);
+            await db.SaveChangesAsync();
+            return RedirectToAction("DeletedProjects");
+
+        }
+
 
 
         //------------------------ Donator -----------------
